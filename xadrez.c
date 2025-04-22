@@ -5,7 +5,7 @@ int main(){
 	
 	setlocale(LC_ALL, "Portuguese");
 	
-	int torre, bispo, rainha;
+	int torre, bispo, rainha, cavalo;
 	
 	//movimentaçao da Torre em ciclo while.
 	
@@ -47,6 +47,32 @@ int main(){
 		printf("Esquerda\n");		
 	}
 	
+	printf("-----------------------\n\n");
+	
+	//movimentaçao do Cavalo com loops aninhados.
+	
+	/*O programa deverá imprimir no console a direção de cada etapa do movimento do Cavalo 
+	("Baixo", "Baixo", "Esquerda"), utilizando o comando printf. */
+	
+	printf("Cavalo:\n\n");
+	
+	int x, y;
+	
+	//ciclo for para mover 2x p baixo
+	for(x = 1; x <= 2; x++){
+		
+		printf("Baixo\n");
+		
+		y = 1;
+		
+		//movimento para esquerda 1x
+		while(y <= 1 && x == 2){
+			
+			printf("Esquerda\n");
+			
+			y++;
+		}
+	}	
 	printf("-----------------------\n\n");
 	
 	return 0;
