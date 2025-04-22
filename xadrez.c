@@ -1,11 +1,54 @@
 #include <stdio.h>
 #include <locale.h>// biblioteca para correção ortografica geografica
 
+//Recursividade do movimento da torre, do bispo e da rainha
+
+void movimentoTorre(int n){
+	
+	while(n <= 5){
+		printf("Direita\n");
+		n++;
+	}	
+}
+
+//----------------------------------------
+
+void movimentoBispo(int n){
+	
+	if (n > 5) {
+        return; 
+    }
+
+    int i;
+    
+    // Loop externo: movimento vertical 
+    for (i = 1; i <= 1; i++) {
+
+        int j = 1;
+        // Loop interno: movimento horizontal
+        while (j <= 1) {
+            printf("Cima Direita\n");
+            j++;
+        }
+    }
+   
+    movimentoBispo(n + 1);
+}
+
+//----------------------------------------
+
+void movimentoRainha(int n){
+	
+	for(n = 1; n <= 8; n++){
+		printf("Esquerda\n");		
+	}	
+}
+
 int main(){
 	
 	setlocale(LC_ALL, "Portuguese");
 	
-	int torre, bispo, rainha, cavalo;
+	int torre, bispo, rainha;
 	
 	//movimentaçao da Torre em ciclo while.
 	
@@ -15,25 +58,20 @@ int main(){
 	
 	printf("Torre:\n\n");
 	
-	while(torre <= 5){
-		printf("Direita\n");
-		torre++;
-	}
+	movimentoTorre(torre);
+	
 	printf("-----------------------\n\n");
 	
 	//movimentaçao do Bispo em ciclo do-while.
 	
 	/*Move-se na diagonal. Seu programa deverá simular o movimento do Bispo cinco casas na diagonal para cima e à direita. 
-	Para representar a diagonal, você imprimirá a combinação de duas direções a cada casa (ex: "Cima, Direita").*/
+	Para representar a diagonal, você imprimirá a combinação de duas direções a cada casa (ex: "Cima Direita").*/
 	
 	bispo = 1;
 	
 	printf("Bispo:\n\n");
 	
-	do{
-		printf("Cima Direita\n");
-		bispo++;
-	}while(bispo <=5);
+	movimentoBispo(bispo);
 	
 	printf("-----------------------\n\n");
 	
@@ -43,9 +81,9 @@ int main(){
 	
 	printf("Rainha:\n\n");
 	
-	for(rainha = 1; rainha <= 8; rainha++){
-		printf("Esquerda\n");		
-	}
+	rainha = 1;
+	
+	movimentoRainha(rainha);
 	
 	printf("-----------------------\n\n");
 	
@@ -58,22 +96,27 @@ int main(){
 	
 	int x, y;
 	
-	//ciclo for para mover 2x p baixo
-	for(x = 1; x <= 2; x++){
-		
-		printf("Baixo\n");
-		
-		y = 1;
-		
-		//movimento para esquerda 1x
-		while(y <= 1 && x == 2){
-			
-			printf("Esquerda\n");
-			
-			y++;
-		}
-	}	
-	printf("-----------------------\n\n");
+	// Movimento 2x para cima
+    for (x = 2; x >= 1; x--) {
+        printf("Cima\n");
+
+        // Se ainda não completou as duas subidas, pula o movimento lateral
+        if (x != 1) {
+            continue;
+        }
+
+        // Quando x == 1, faz o movimento para a direita
+        y = 1;
+        while (y <= 1) {
+            if (x != 1) {
+                break;
+            }
+
+            printf("Direita\n");
+            y++;
+        }
+    }
+	printf("-----------------------\n\n");	
 	
 	return 0;
 }
